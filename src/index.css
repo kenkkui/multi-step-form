@@ -1,0 +1,52 @@
+:root {
+  /* Primary */
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  /* Neutral */
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  background: var(--magnolia);
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content {
+  background: var(--white);
+  width:60vw;
+  min-height: 50%;
+  border-radius: 16px;
+
+  box-shadow: 2px 4px 10px var(--light-gray);
+  padding: 16px;
+}
+
+#step-flow {
+  width: 20%;
+  position: relative;
+}
+
+#step-flow svg {
+  height: 100%;
+}
+
