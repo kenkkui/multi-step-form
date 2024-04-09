@@ -1,0 +1,71 @@
+main#step-two {
+  height: 100%;
+  position: relative;
+}
+
+main#step-two .card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+main#step-two .card {
+  height: 190px;
+  flex-direction: column;
+}
+
+.plan-name .name {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--marine-blue);
+}
+
+.plan-name .billing {
+  font-size: 14px;
+  color: var(--cool-grey);
+}
+
+.billing-plan {
+  width: 100%;
+  background: var(--magnolia);
+  border-radius: 8px;
+  padding: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.billing-plan .content-container {
+  display: flex;
+  gap: 20px;
+}
+
+.billing-plan .switch {
+  position: relative;
+  height: 20px;
+  width: 45px;
+  border-radius: 50px;
+  background: var(--marine-blue);
+
+  cursor: pointer;
+}
+
+.billing-plan .switch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--magnolia);
+  scale: 0.6;
+  border-radius: 50%;
+}
+
+.billing-plan p {
+  font-weight: 500;
+  color: var(--cool-grey);
+}

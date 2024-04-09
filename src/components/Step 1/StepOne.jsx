@@ -1,5 +1,7 @@
 import React, { forwardRef } from 'react';
 import Inputs from "./Inputs"
+import "./StepOne.css"
+import NextBtn from '../NextBtn';
 
 function StepOne({ nextStep }) {
   return (
@@ -29,7 +31,9 @@ function StepOne({ nextStep }) {
         />
       </form>
 
-      <button className='next-btn' onClick={nextStep}>Next Step</button>
+      <NextBtn 
+        nextStep={nextStep}
+      />
     </>
   );
 }

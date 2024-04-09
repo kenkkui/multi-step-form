@@ -15,8 +15,28 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
 
-  /* background: lightblue; */
+.back-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  padding: 13px 26px;
+  width: fit-content;
+  border-radius: 8px;
+  color: var(--cool-grey);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.15s;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.back-btn:hover {
+  color: var(--marine-blue);
+  scale: 1.05;
 }
 
 .next-btn {
@@ -32,6 +52,8 @@
   right: 0;
   transition: 0.15s;
   cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .next-btn:hover {
@@ -40,57 +62,35 @@
 }
 
 .form-content header{
-  line-height: 210%;
+  line-height: 260%;
 }
 
 .form-content header h1 {
-  font-size: 36px;
+  font-weight: 700;
+  font-size: 32px;
 }
 
 .form-content header aside {
   color: var(--cool-grey);
 }
 
-.form-content form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
-.input {
-  width: 100%;
-}
-
-#form-page label {
-  margin-bottom: 4px;
-}
-
-#form-page .label-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.input input {
-  height: 50px;
-  width: 100%;
+.card {
   border: 1px solid var(--light-grey);
   border-radius: 8px;
-  padding: 0px 15px;
+  padding: 20px 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 
-  font-weight: 500;
-  font-size: 17px;
+  transition: 0.1s;
 }
 
-.input input::placeholder {
-  color: var(--cool-grey);
+.card:hover {
+  border: 1px solid var(--purplish-blue);
 }
 
-.input input:focus {
-  outline: none;
-  border: 1px solid var(--marine-blue);
-  color: var(--marine-blue);
-  caret-color: var(--marine-blue);
+.card.active {
+  background: var(--magnolia);
+  border: 1px solid var(--purplish-blue);
 }
+
