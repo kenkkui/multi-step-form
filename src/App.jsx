@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./index.css"
 import Step from './components/Step';
+import Forms from './components/Forms';
+
+import StepOne from './components/Step one/StepOne';
 
 const stepHeadings = [
   "YOUR INFO",
@@ -9,11 +12,29 @@ const stepHeadings = [
   "SUMMARY"
 ]
 
+
 function App() {
+  const [stepNumber, setStepNumber] = useState(1);
+
+  function handleNextStep() {
+    setStepNumber(prev => prev++)
+  }
+
   return (
     <>
       <section id="content">
         <section id="step-flow">
+          <section className="step-container">
+            {stepHeadings.map((item, index) => {
+              return <Step
+                key={index}
+                stepState={stepNumber}
+                step={index + 1}
+                heading={item}
+              />
+            })}
+          </section>
+
           <svg xmlns="http://www.w3.org/2000/svg" width="274" height="568" fill="none" viewBox="0 0 274 568">
             <rect width="274" height="568" fill="#483EFF" rx="10"/>
             <mask id="a"  width="274" height="568" x="0" y="0" maskUnits="userSpaceOnUse" style={{maskType: "alpha"}}>
@@ -26,26 +47,13 @@ function App() {
               <path fill="#FFAF7E" d="M.305 546.891c37.003 0 67-29.997 67-67s-29.997-67-67-67-67 29.997-67 67 29.997 67 67 67Z"/>
             </g>
           </svg>
-
-          {/* {stepHeadings.map((item, index) => {
-            return <Step 
-              key={index}
-              step={index}
-              heading={item}
-            />
-          })} */}
-
-          <div className="step">
-            <div className="number">1</div>
-
-            <div className="info">
-              <div className="step-number">STEP 1</div>
-              <div className="heading">YOUR INFO</div>
-            </div>
-          </div>
         </section>
 
-        <section id="interact"></section>
+        <Forms>
+          <StepOne 
+            nextStep={handleNextStep}
+          />
+        </Forms>
       </section>
     </>
   );
