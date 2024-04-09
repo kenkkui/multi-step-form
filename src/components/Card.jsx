@@ -1,11 +1,9 @@
 import React, { Children, useState } from 'react';
 import Checkbox from './Step 3/Checkbox';
 
-function Card({ name, aside, price, step, children }) {
-  const [selectCard, setselectCard] = useState(false);
-
+function Card({ name, aside, price, selectCard, isSelectCard }) {
   return (
-    <div className={`card ${selectCard ? "active" : ""}`} onClick={() => setselectCard(prev => !prev)}>
+    <div className={`card ${isSelectCard ? "active" : ""}`} onClick={() => selectCard(prev => !prev)}>
       <Checkbox 
         name={name}
         aside={aside}

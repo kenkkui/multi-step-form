@@ -10,11 +10,6 @@ main#step-two .card-wrapper {
   margin-bottom: 30px;
 }
 
-main#step-two .card {
-  height: 190px;
-  flex-direction: column;
-}
-
 .plan-name .name {
   font-weight: 700;
   font-size: 18px;

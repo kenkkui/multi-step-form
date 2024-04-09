@@ -6,6 +6,7 @@ import Forms from "./components/Forms";
 import StepOne from "./components/Step 1/StepOne";
 import StepTwo from "./components/Step 2/StepTwo";
 import StepThree from "./components/Step 3/StepThree";
+import Header from "./components/Header";
 
 const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
@@ -89,7 +90,12 @@ function App() {
           </svg>
         </section>
 
+
+
         <Forms>
+          <Header 
+            stepNumber={stepNumber}
+          />
           {stepNumber === 1 && <StepOne nextStep={handleNextStep} />}
           {stepNumber === 2 && (
             <StepTwo

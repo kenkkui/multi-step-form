@@ -5,14 +5,9 @@ import Checkbox from "./Checkbox";
 import BackBtn from "../BackBtn";
 import NextBtn from "../NextBtn";
 
-function StepThree({ nextStep, backStep }) {
+function StepThree({ nextStep, backStep, selectCard, isSelectCard }) {
   return (
     <>
-      <header>
-        <h1>Pick add-ons</h1>
-        <aside>Add-ons help enhance your gaming experience.</aside>
-      </header>
-
       <main id="step-three">
         <section className="card-wrapper">
           <Card
@@ -20,6 +15,8 @@ function StepThree({ nextStep, backStep }) {
             name="Online service"
             aside="Access to multiplayer gamers"
             price="1"
+            selectCard={selectCard}
+            isSelectCard={isSelectCard}
           />
 
           <Card
@@ -27,6 +24,8 @@ function StepThree({ nextStep, backStep }) {
             name="Larger storage"
             aside="Extra 1TB of cloud save"
             price="2"
+            selectCard={selectCard}
+            isSelectCard={isSelectCard}
           />
 
           <Card
@@ -34,6 +33,8 @@ function StepThree({ nextStep, backStep }) {
             name="Customizable profile"
             aside="Custom theme on your profile"
             price="2"
+            selectCard={selectCard}
+            isSelectCard={isSelectCard}
           />
         </section>
 

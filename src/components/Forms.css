@@ -74,7 +74,7 @@
   color: var(--cool-grey);
 }
 
-.card {
+.plan-card {
   border: 1px solid var(--light-grey);
   border-radius: 8px;
   padding: 20px 18px;
@@ -83,13 +83,17 @@
   justify-content: space-between;
 
   transition: 0.1s;
+  height: 190px;
+  flex-direction: column;
 }
 
-.card:hover {
+.card:hover,
+.plan-card:hover {
   border: 1px solid var(--purplish-blue);
 }
 
-.card.active {
+.card.active,
+.plan-card.active {
   background: var(--magnolia);
   border: 1px solid var(--purplish-blue);
 }
