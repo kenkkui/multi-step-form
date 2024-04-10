@@ -25,7 +25,7 @@ function StepOne({ nextStep }) {
         />
 
         <Inputs 
-          type="number"
+          type="tel"
           subject="Phone number"
           placeholder="e.g. +1 234 567 890"
         />

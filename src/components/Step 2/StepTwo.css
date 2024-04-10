@@ -22,6 +22,12 @@ main#step-two .card-wrapper {
   color: var(--cool-grey);
 }
 
+main#step-two .discount {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--marine-blue);
+}
+
 .billing-plan {
   width: 100%;
   background: var(--magnolia);
@@ -40,8 +46,8 @@ main#step-two .card-wrapper {
 
 .billing-plan .switch {
   position: relative;
-  height: 20px;
-  width: 45px;
+  height: 22px;
+  width: 44px;
   border-radius: 50px;
   background: var(--marine-blue);
 
@@ -53,14 +59,26 @@ main#step-two .card-wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   background: var(--magnolia);
   scale: 0.6;
   border-radius: 50%;
+  transition: 0.15s cubic-bezier(1, 0, 0, 1);
+}
+
+.billing-plan .switch.active::before {
+  content: "";
+  left: 22px;
 }
 
 .billing-plan p {
   font-weight: 500;
   color: var(--cool-grey);
+  transition: 0.15s;
 }
+
+.billing-plan p.active {
+  color: var(--marine-blue);
+}
+

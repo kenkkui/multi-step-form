@@ -11,20 +11,8 @@ import Header from "./components/Header";
 const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
 function App() {
+  const [billingPeriod, setBillingPeriod] = useState("monthly");
   const [stepNumber, setStepNumber] = useState(1);
-  const [selectCard, setSelectCard] = useState(false);
-
-  function handleSelectCard() {
-    setSelectCard((prev) => !prev);
-  }
-
-  function handleNextStep() {
-    setStepNumber((prev) => (prev += 1));
-  }
-
-  function handleGoBack() {
-    setStepNumber((prev) => (prev -= 1));
-  }
 
   return (
     <>
@@ -90,30 +78,29 @@ function App() {
           </svg>
         </section>
 
-
-
         <Forms>
           <Header 
-            stepNumber={stepNumber}
+            stepNumber={stepNumber - 1}
           />
-          {stepNumber === 1 && <StepOne nextStep={handleNextStep} />}
+          {stepNumber === 1 && <StepOne nextStep={() => setStepNumber(prev => prev += 1)} />}
+
           {stepNumber === 2 && (
             <StepTwo
-              nextStep={handleNextStep}
-              backStep={handleGoBack}
-              selectCard={handleSelectCard}
-              isSelectCard={selectCard}
+              nextStep={() => setStepNumber(prev => prev += 1)}
+              backStep={() => setStepNumber(prev => prev -= 1)}
+
+              billingPeriod={billingPeriod}
+              setBillingPeriod={setBillingPeriod}
             />
           )}
+
           {stepNumber === 3 && (
             <StepThree
-              nextStep={handleNextStep}
-              backStep={handleGoBack}
-              selectCard={handleSelectCard}
-              isSelectCard={selectCard}
+              nextStep={() => setStepNumber(prev => prev += 1)}
+              backStep={() => setStepNumber(prev => prev -= 1)}
+              billingPeriod={billingPeriod}
             />
           )}
-          {/* {stepNumber === 4 && } */}
         </Forms>
       </section>
     </>

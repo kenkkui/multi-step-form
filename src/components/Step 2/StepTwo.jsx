@@ -1,47 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./StepTwo.css"
 import NextBtn from '../NextBtn';
 import BackBtn from '../BackBtn';
-import Card from '../Card';
 import PlanCard from './PlanCard';
+import BillingPlan from './BillingPlan';
 
-function StepTwo({ nextStep, backStep, selectCard, isSelectCard }) {
+
+
+function StepTwo({ nextStep, backStep, billingPeriod, setBillingPeriod }) {
+  const [selectCard, setSelectCard] = useState();
+  const PLAN_CARDS = [
+    {
+      id: 0,
+      price: billingPeriod === "monthly" ? "9/mo" : "90/yr",
+      plan: "Arcade"
+    },
+    {
+      id: 1,
+      price: billingPeriod === "monthly" ? "12/mo" : "120/yr",
+      plan: "Advanced"
+    },
+    {
+      id: 2,
+      price: billingPeriod === "monthly" ? "15/mo" : "150/yr",
+      plan: "Pro"
+    }
+  ]
+
   return (
     <>
-      {/* <header>
-        <h1>Select your plan</h1>
-        <aside>You have the option of monthly or yearly billing</aside>
-      </header> */}
-
       <main id='step-two'>
         <div className="card-wrapper">
-          <PlanCard 
-            price="9"
-            plan="Arcade"
-          />
-
-          <PlanCard 
-            price="12"
-            plan="Advanced"
-          />
-
-          <PlanCard 
-            price="18"
-            plan="Pro"
-          />
+          {PLAN_CARDS.map(card => {
+            return (
+              <PlanCard 
+                price={card.price}
+                plan={card.plan}
+                selectCard={() => setSelectCard(card.id)}
+                isSelectCard={selectCard === card.id}
+                billingPeriod={billingPeriod}
+              />
+            )
+          })}
         </div>
 
-        <section className='billing-plan'>
-          <div className="content-container">
-            <p>Monthly</p>
-            <div className="switch"></div>
-            <p>Yearly</p>
-          </div>
-        </section>
+        <BillingPlan 
+          setBillingPeriod={setBillingPeriod}
+          billingPeriod={billingPeriod}
+        />
 
-
-          <BackBtn backStep={backStep} />
-          <NextBtn nextStep={nextStep} />
+        <BackBtn backStep={backStep} />
+        <NextBtn nextStep={nextStep} />
       </main>
     </>
   );

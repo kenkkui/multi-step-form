@@ -17,7 +17,7 @@ function Checkbox({ name, aside, price, selectCard }) {
         </div>
       </section>
 
-      <div className="billing-price">+${price}/mo</div>
+      <div className="billing-price">+${price}</div>
     </>
   );
 }
