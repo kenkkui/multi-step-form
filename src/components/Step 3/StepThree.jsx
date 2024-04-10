@@ -38,27 +38,25 @@ function StepThree({ nextStep, backStep, billingPeriod }) {
   ]
 
   return (
-    <>
-      <main id="step-three">
-        <section className="card-wrapper">
-          {CARDS.map(card => {
-            return (
-              <Card
-                key={card.id}
-                name={card.name}
-                aside={card.aside}
-                price={card.price}
-                selectCard={selectCard.includes(card.id)}
-                onClick={() => toggleCard(card.id)}
-              />
-            )
-          })}
-        </section>
+    <main id="step-three">
+      <section className="card-wrapper">
+        {CARDS.map(card => {
+          return (
+            <Card
+              key={card.id}
+              name={card.name}
+              aside={card.aside}
+              price={card.price}
+              selectCard={selectCard.includes(card.id)}
+              onClick={() => toggleCard(card.id)}
+            />
+          )
+        })}
+      </section>
 
-        <BackBtn backStep={backStep} />
-        <NextBtn nextStep={nextStep} />
-      </main>
-    </>
+      <BackBtn backStep={backStep} />
+      <NextBtn nextStep={nextStep} />
+    </main>
   );
 }
 

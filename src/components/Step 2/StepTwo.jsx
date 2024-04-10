@@ -28,31 +28,29 @@ function StepTwo({ nextStep, backStep, billingPeriod, setBillingPeriod }) {
   ]
 
   return (
-    <>
-      <main id='step-two'>
-        <div className="card-wrapper">
-          {PLAN_CARDS.map(card => {
-            return (
-              <PlanCard 
-                price={card.price}
-                plan={card.plan}
-                selectCard={() => setSelectCard(card.id)}
-                isSelectCard={selectCard === card.id}
-                billingPeriod={billingPeriod}
-              />
-            )
-          })}
-        </div>
+    <main id='step-two'>
+      <div className="card-wrapper">
+        {PLAN_CARDS.map(card => {
+          return (
+            <PlanCard 
+              price={card.price}
+              plan={card.plan}
+              selectCard={() => setSelectCard(card.id)}
+              isSelectCard={selectCard === card.id}
+              billingPeriod={billingPeriod}
+            />
+          )
+        })}
+      </div>
 
-        <BillingPlan 
-          setBillingPeriod={setBillingPeriod}
-          billingPeriod={billingPeriod}
-        />
+      <BillingPlan 
+        setBillingPeriod={setBillingPeriod}
+        billingPeriod={billingPeriod}
+      />
 
-        <BackBtn backStep={backStep} />
-        <NextBtn nextStep={nextStep} />
-      </main>
-    </>
+      <BackBtn backStep={backStep} />
+      <NextBtn nextStep={nextStep} />
+    </main>
   );
 }
 

@@ -7,6 +7,7 @@ import StepOne from "./components/Step 1/StepOne";
 import StepTwo from "./components/Step 2/StepTwo";
 import StepThree from "./components/Step 3/StepThree";
 import Header from "./components/Header";
+import StepFour from "./components/Step 4/StepFour";
 
 const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
@@ -96,6 +97,14 @@ function App() {
 
           {stepNumber === 3 && (
             <StepThree
+              nextStep={() => setStepNumber(prev => prev += 1)}
+              backStep={() => setStepNumber(prev => prev -= 1)}
+              billingPeriod={billingPeriod}
+            />
+          )}
+
+          {stepNumber === 4 && (
+            <StepFour 
               nextStep={() => setStepNumber(prev => prev += 1)}
               backStep={() => setStepNumber(prev => prev -= 1)}
               billingPeriod={billingPeriod}

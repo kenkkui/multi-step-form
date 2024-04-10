@@ -1,8 +1,10 @@
 import React from 'react';
 
-function NextBtn({ nextStep }) {
+function NextBtn({ nextStep, confirm }) {
   return (
-    <button className='next-btn' onClick={nextStep}>Next Step</button>
+    <button className={`next-btn ${confirm ? "confirm" : ""}`} onClick={nextStep}>
+      {confirm ? "Confirm" : "Next Step"}
+    </button>
   );
 }
 

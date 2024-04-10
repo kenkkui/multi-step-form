@@ -6,11 +6,6 @@ import NextBtn from '../NextBtn';
 function StepOne({ nextStep }) {
   return (
     <>
-      {/* <header>
-        <h1>Personal info</h1>
-        <aside>Please Provide your name, email address, and phone number.</aside>
-      </header> */}
-
       <form>
         <Inputs 
           type="text"
