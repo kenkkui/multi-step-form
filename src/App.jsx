@@ -14,6 +14,43 @@ const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 function App() {
   const [billingPeriod, setBillingPeriod] = useState("monthly");
   const [stepNumber, setStepNumber] = useState(1);
+  const [info, setInfo] = useState({
+    step1: {
+      text: "",
+      email: "",
+      tel: "",
+    },
+
+    step2: {
+      plan: "Arcade",
+      period: "monthly",
+    },
+
+    step3: {
+      addOns: [],
+    },
+  });
+
+  function handleClick(step) {
+    if (step === "1") {
+      let error = [];
+
+      for (let key in info.step1) {
+        if (info.step1[key] === "" && !error.includes(key)) {
+          error.push(key);
+        }
+      }
+
+      if (error.length > 0) {
+        console.log(error);
+        setAnimationError(true)
+      } else {
+        setStepNumber((prev) => (prev += 1))
+      }
+    } else if (step === "2") {
+      setStepNumber((prev) => (prev += 1))
+    }
+  }
 
   return (
     <>
@@ -80,34 +117,42 @@ function App() {
         </section>
 
         <Forms>
-          <Header 
-            stepNumber={stepNumber - 1}
-          />
-          {stepNumber === 1 && <StepOne nextStep={() => setStepNumber(prev => prev += 1)} />}
+          <Header stepNumber={stepNumber - 1} />
+          {stepNumber === 1 && (
+            <StepOne
+              onClick={handleClick}
+              info={info}
+              setInfo={setInfo}
+            />
+          )}
 
           {stepNumber === 2 && (
             <StepTwo
-              nextStep={() => setStepNumber(prev => prev += 1)}
-              backStep={() => setStepNumber(prev => prev -= 1)}
-
+              backStep={() => setStepNumber((prev) => (prev -= 1))}
+              onClick={handleClick}
+               
               billingPeriod={billingPeriod}
               setBillingPeriod={setBillingPeriod}
+              info={info}
+              setInfo={setInfo}
             />
           )}
 
           {stepNumber === 3 && (
             <StepThree
-              nextStep={() => setStepNumber(prev => prev += 1)}
-              backStep={() => setStepNumber(prev => prev -= 1)}
+              backStep={() => setStepNumber((prev) => (prev -= 1))}
               billingPeriod={billingPeriod}
+              info={info}
+              setInfo={setInfo}
             />
           )}
 
           {stepNumber === 4 && (
-            <StepFour 
-              nextStep={() => setStepNumber(prev => prev += 1)}
-              backStep={() => setStepNumber(prev => prev -= 1)}
+            <StepFour
+              backStep={() => setStepNumber((prev) => (prev -= 1))}
               billingPeriod={billingPeriod}
+              setStepNumber={setStepNumber}
+              info={info}
             />
           )}
         </Forms>

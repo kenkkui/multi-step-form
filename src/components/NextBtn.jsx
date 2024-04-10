@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function NextBtn({ nextStep, confirm }) {
+function NextBtn({ onClick, confirm, setAnimationError, animation }) {
+ 
+
   return (
-    <button className={`next-btn ${confirm ? "confirm" : ""}`} onClick={nextStep}>
+    <button className={`next-btn ${confirm ? "confirm" : ""} ${animation ? "animate-error" : ""}`} onClick={onClick} onAnimationEnd={() => setAnimationError(false)}>
       {confirm ? "Confirm" : "Next Step"}
     </button>
   );

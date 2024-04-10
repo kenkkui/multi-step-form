@@ -7,7 +7,7 @@ import BillingPlan from './BillingPlan';
 
 
 
-function StepTwo({ nextStep, backStep, billingPeriod, setBillingPeriod }) {
+function StepTwo({ onClick, backStep, billingPeriod, setBillingPeriod, info, setInfo }) {
   const [selectCard, setSelectCard] = useState();
   const PLAN_CARDS = [
     {
@@ -32,7 +32,8 @@ function StepTwo({ nextStep, backStep, billingPeriod, setBillingPeriod }) {
       <div className="card-wrapper">
         {PLAN_CARDS.map(card => {
           return (
-            <PlanCard 
+            <PlanCard
+              key={card.id}
               price={card.price}
               plan={card.plan}
               selectCard={() => setSelectCard(card.id)}
@@ -49,7 +50,10 @@ function StepTwo({ nextStep, backStep, billingPeriod, setBillingPeriod }) {
       />
 
       <BackBtn backStep={backStep} />
-      <NextBtn nextStep={nextStep} />
+      <NextBtn 
+        onClick={() => onClick("2")}
+
+      />
     </main>
   );
 }
