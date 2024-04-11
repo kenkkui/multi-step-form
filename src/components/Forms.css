@@ -116,3 +116,9 @@
   border: 1px solid var(--purplish-blue);
 }
 
+@media (max-width:1440px) {
+  #form-page {
+    padding: 20px 45px 10px;
+  }
+}
+

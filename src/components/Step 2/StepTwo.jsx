@@ -7,22 +7,22 @@ import BillingPlan from './BillingPlan';
 
 
 
-function StepTwo({ onClick, backStep, billingPeriod, setBillingPeriod, info, setInfo }) {
-  const [selectCard, setSelectCard] = useState();
+function StepTwo({ onClick, backStep, info, setInfo }) {
+  const [selectCard, setSelectCard] = useState(0);
   const PLAN_CARDS = [
     {
       id: 0,
-      price: billingPeriod === "monthly" ? "9/mo" : "90/yr",
+      price: info.step2.period === "monthly" ? "9/mo" : "90/yr",
       plan: "Arcade"
     },
     {
       id: 1,
-      price: billingPeriod === "monthly" ? "12/mo" : "120/yr",
+      price: info.step2.period === "monthly" ? "12/mo" : "120/yr",
       plan: "Advanced"
     },
     {
       id: 2,
-      price: billingPeriod === "monthly" ? "15/mo" : "150/yr",
+      price: info.step2.period === "monthly" ? "15/mo" : "150/yr",
       plan: "Pro"
     }
   ]
@@ -36,23 +36,24 @@ function StepTwo({ onClick, backStep, billingPeriod, setBillingPeriod, info, set
               key={card.id}
               price={card.price}
               plan={card.plan}
+
               selectCard={() => setSelectCard(card.id)}
               isSelectCard={selectCard === card.id}
-              billingPeriod={billingPeriod}
+
+              info={info}
             />
           )
         })}
       </div>
 
       <BillingPlan 
-        setBillingPeriod={setBillingPeriod}
-        billingPeriod={billingPeriod}
+        setInfo={setInfo}
+        info={info}
       />
 
       <BackBtn backStep={backStep} />
       <NextBtn 
         onClick={() => onClick("2")}
-
       />
     </main>
   );

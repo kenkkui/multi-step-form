@@ -14,6 +14,8 @@ const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 function App() {
   const [billingPeriod, setBillingPeriod] = useState("monthly");
   const [stepNumber, setStepNumber] = useState(1);
+
+  const [animationError, setAnimationError] = useState(false);
   const [info, setInfo] = useState({
     step1: {
       text: "",
@@ -120,9 +122,11 @@ function App() {
           <Header stepNumber={stepNumber - 1} />
           {stepNumber === 1 && (
             <StepOne
-              onClick={handleClick}
+              handleClick={handleClick}
               info={info}
               setInfo={setInfo}
+              animationError={animationError}
+              setAnimationError={setAnimationError}
             />
           )}
 
@@ -131,8 +135,6 @@ function App() {
               backStep={() => setStepNumber((prev) => (prev -= 1))}
               onClick={handleClick}
                
-              billingPeriod={billingPeriod}
-              setBillingPeriod={setBillingPeriod}
               info={info}
               setInfo={setInfo}
             />

@@ -1,15 +1,30 @@
-import React from 'react';
+import React from "react";
 
-function BillingPlan({ billingPeriod, setBillingPeriod }) {
-
+function BillingPlan({ info, setInfo }) {
   return (
-    <section className='billing-plan'>
+    <section className="billing-plan">
       <div className="content-container">
-        <p className={billingPeriod === "monthly" ? "active" : ""}>Monthly</p>
-        <div className={`switch ${billingPeriod === "yearly" ? "active" : ""}`} onClick={() => setBillingPeriod(prev => prev === "monthly" ? "yearly" : "monthly")}></div>
-        <p className={billingPeriod === "yearly" ? "active" : ""}>Yearly</p>
+        <p className={info.step2.period === "monthly" ? "active" : ""}>
+          Monthly
+        </p>
+        <div
+          className={`switch ${info.step2.period === "yearly" ? "active" : ""}`}
+          onClick={() =>
+            setInfo((prev) => {
+              const updatedValues = {
+                ...prev,
+                step2: {
+                  ...prev.step2,
+                  period: info.step2.period === "monthly" ? "yearly" : "monthly"
+                }
+              }
+              return updatedValues;
+            })
+          }
+        ></div>
+        <p className={info.step2.period === "yearly" ? "active" : ""}>Yearly</p>
       </div>
-  </section>
+    </section>
   );
 }
 

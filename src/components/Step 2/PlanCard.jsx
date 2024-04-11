@@ -1,7 +1,6 @@
 import React from 'react';
 
-function PlanCard({ plan, price, selectCard, isSelectCard, billingPeriod }) {
-
+function PlanCard({ plan, price, selectCard, isSelectCard, info }) {
   return (
     <div className={`plan-card ${isSelectCard ? "active" : ""}`} onClick={selectCard}>
       <section className="svg-plan">
@@ -13,10 +12,10 @@ function PlanCard({ plan, price, selectCard, isSelectCard, billingPeriod }) {
       <section className="plan-name">
         <div className="name">{plan}</div>
         <div className="billing">${price}</div>
-        {billingPeriod === "yearly" && <p className='discount'>2 months free</p>}
+        {info.step2.period === "yearly" && <p className='discount'>2 months free</p>}
       </section>
     </div>
-  );
+  );  
 }
 
 export default PlanCard;

@@ -1,4 +1,4 @@
-.form-content form {
+main#step-one{
   display: flex;
   flex-direction: column;
   align-items: center;

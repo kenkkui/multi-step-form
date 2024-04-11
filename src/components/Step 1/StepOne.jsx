@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Inputs from "./Inputs"
 import "./StepOne.css"
 import NextBtn from '../NextBtn';
 
-function StepOne({ handleClick, info, setInfo }) {
-  const [animationError, setAnimationError] = useState(false);
-
-
+function StepOne({ handleClick, info, setInfo, animationError, setAnimationError }) {
   return (
     <>
-      <form>
+      <main id='step-one'>
         <Inputs 
           type="text"
           subject="Name"
@@ -33,13 +30,13 @@ function StepOne({ handleClick, info, setInfo }) {
           setInfo={setInfo}
           info={info}
         />
-      </form>
 
-      <NextBtn
-        onClick={() => handleClick("1")}
-        animation={animationError}
-        setAnimationError={setAnimationError}
-      />
+        <NextBtn
+          onClick={() => handleClick("1")}
+          animation={animationError}
+          setAnimationError={setAnimationError}
+        />
+      </main>
     </>
   );
 }
