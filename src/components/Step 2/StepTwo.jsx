@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./StepTwo.css"
 import NextBtn from '../NextBtn';
 import BackBtn from '../BackBtn';
@@ -8,7 +8,20 @@ import BillingPlan from './BillingPlan';
 
 
 function StepTwo({ onClick, backStep, info, setInfo }) {
-  const [selectCard, setSelectCard] = useState(0);
+  const [selectCard, setSelectCard] = useState("Arcade");
+
+  useEffect(() => {
+    setInfo(prev => {
+      return {
+        ...prev,
+        step2: {
+          ...prev.step2,
+          plan: selectCard
+       }
+      }
+    })
+  }, [selectCard])
+
   const PLAN_CARDS = [
     {
       id: 0,
@@ -37,8 +50,8 @@ function StepTwo({ onClick, backStep, info, setInfo }) {
               price={card.price}
               plan={card.plan}
 
-              selectCard={() => setSelectCard(card.id)}
-              isSelectCard={selectCard === card.id}
+              selectCard={(prev) => setSelectCard(prev, card.plan)}
+              isSelectCard={selectCard === card.plan}
 
               info={info}
             />

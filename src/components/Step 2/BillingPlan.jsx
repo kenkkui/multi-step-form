@@ -13,7 +13,7 @@ function BillingPlan({ info, setInfo }) {
             setInfo((prev) => {
               const updatedValues = {
                 ...prev,
-                step2: {
+                step2: {  
                   ...prev.step2,
                   period: info.step2.period === "monthly" ? "yearly" : "monthly"
                 }

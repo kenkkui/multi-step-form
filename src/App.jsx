@@ -15,20 +15,20 @@ function App() {
   const [stepNumber, setStepNumber] = useState(1);
 
   const [animationError, setAnimationError] = useState(false);
-  const [info, setInfo] = useState([
-    {
+  const [info, setInfo] = useState({
+    step1: {
       text: "",
       email: "",
       tel: "",
     },
-    {
+    step2: {
       plan: "Arcade",
       period: "monthly",
     },
-    {
+    step3: {
       addOns: [],
     },
-  ]);
+});
 
   function handleClick() {
     setStepNumber(prev => prev += 1)
