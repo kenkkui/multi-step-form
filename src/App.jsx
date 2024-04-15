@@ -13,7 +13,6 @@ const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
 function App() {
   const [stepNumber, setStepNumber] = useState(1);
-
   const [animationError, setAnimationError] = useState(false);
   const [info, setInfo] = useState({
     step1: {
@@ -28,10 +27,14 @@ function App() {
     step3: {
       addOns: [],
     },
-});
+  });
 
-  function handleClick() {
-    setStepNumber(prev => prev += 1)
+  function handleNextStep() {
+    setStepNumber((prev) => (prev += 1));
+  }
+
+  function handleBackStep() {
+    setStepNumber((prev) => (prev -= 1));
   }
 
   return (
@@ -114,9 +117,9 @@ function App() {
 
           {stepNumber === 2 && (
             <StepTwo
-              backStep={() => setStepNumber((prev) => (prev -= 1))}
-              onClick={handleClick}
-               
+              backStep={handleBackStep}
+              nextStep={handleNextStep}
+
               info={info}
               setInfo={setInfo}
             />
@@ -124,7 +127,9 @@ function App() {
 
           {stepNumber === 3 && (
             <StepThree
-              backStep={() => setStepNumber((prev) => (prev -= 1))}
+              backStep={handleBackStep}
+              nextStep={handleNextStep}
+
               info={info}
               setInfo={setInfo}
             />
@@ -132,7 +137,9 @@ function App() {
 
           {stepNumber === 4 && (
             <StepFour
-              backStep={() => setStepNumber((prev) => (prev -= 1))}
+              backStep={handleBackStep}
+              nextStep={handleNextStep}
+              
               setStepNumber={setStepNumber}
               info={info}
             />

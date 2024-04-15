@@ -5,7 +5,7 @@ import BackBtn from '../BackBtn';
 import PlanCard from './PlanCard';
 import BillingPlan from './BillingPlan';
 
-function StepTwo({ onClick, backStep, info, setInfo }) {
+function StepTwo({ nextStep, backStep, info, setInfo }) {
   const plan_cards = [
     {
       id: 0,
@@ -60,7 +60,7 @@ function StepTwo({ onClick, backStep, info, setInfo }) {
 
       <BackBtn backStep={backStep} />
       <NextBtn 
-        onClick={() => onClick("2")}
+        onClick={nextStep}
       />
     </main>
   );
