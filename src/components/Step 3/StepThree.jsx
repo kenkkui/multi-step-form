@@ -1,54 +1,71 @@
-import React, { useState} from "react";
+import React from "react";
 import "./StepThree.css";
 import Card from "../Card";
-import Checkbox from "./Checkbox";
 import BackBtn from "../BackBtn";
 import NextBtn from "../NextBtn";
 
-function StepThree({ nextStep, backStep, billingPeriod }) {
-  const [selectCard, setSelectCard] = useState([]);
+function StepThree({ nextStep, backStep, info, setInfo }) {
 
-  function toggleCard(cardIndex) {
-    if (selectCard.includes(cardIndex)) {
-      setSelectCard(selectCard.filter(index => index !== cardIndex))
+  function toggleCard(cardName) {
+    if (info.step3.addOns.includes(cardName)) {
+      setInfo(prev => {
+        const updatedValues = {
+          ...prev,
+          step3: {
+            addOns: prev.step3.addOns.filter(index => index !== cardName)
+          }
+        }
+
+        return updatedValues
+      })
     } else {
-      setSelectCard([...selectCard, cardIndex])
+      setInfo(prev => {
+        const updatedValues = {
+          ...prev,
+          step3: {
+            addOns: [...prev.step3.addOns, cardName]
+          }
+        }
+
+        return updatedValues
+      })
+
     }
   }
 
-  const CARDS = [
+  const cards = [
     {
       id: 1,
       name:"Online service",
       aside:"Access to multiplayer gamers",
-      price: billingPeriod === "yearly" ? "10/yr" : "1/mo"
+      price: info.step2.period === "yearly" ? "10/yr" : "1/mo"
     },
     {
       id: 2,
       name:"Larger storage",
       aside:"Extra 1TB of cloud save",
-      price: billingPeriod === "yearly" ? "20/yr" : "2/mo"
+      price: info.step2.period === "yearly" ? "20/yr" : "2/mo"
     },
     {
       id: 3,
       name:"Customizable profile",
       aside:"Custom theme on your profile",
-      price: billingPeriod === "yearly" ? "20/yr" : "2/mo"
+      price: info.step2.period === "yearly" ? "20/yr" : "2/mo"
     }
   ]
 
   return (
     <main id="step-three">
       <section className="card-wrapper">
-        {CARDS.map(card => {
+        {cards.map(card => {
           return (
             <Card
               key={card.id}
               name={card.name}
               aside={card.aside}
               price={card.price}
-              selectCard={selectCard.includes(card.id)}
-              onClick={() => toggleCard(card.id)}
+              selectCard={info.step3.addOns.includes(card.name)}
+              onClick={() => toggleCard(card.name)}
             />
           )
         })}
