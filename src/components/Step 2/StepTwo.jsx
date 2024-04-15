@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "./StepTwo.css"
 import NextBtn from '../NextBtn';
 import BackBtn from '../BackBtn';
 import PlanCard from './PlanCard';
 import BillingPlan from './BillingPlan';
 
-
-
 function StepTwo({ onClick, backStep, info, setInfo }) {
-  const [selectCard, setSelectCard] = useState("Arcade");
-
-  useEffect(() => {
-    setInfo(prev => {
-      return {
-        ...prev,
-        step2: {
-          ...prev.step2,
-          plan: selectCard
-       }
-      }
-    })
-  }, [selectCard])
-
-  const PLAN_CARDS = [
+  const plan_cards = [
     {
       id: 0,
       price: info.step2.period === "monthly" ? "9/mo" : "90/yr",
@@ -40,19 +24,29 @@ function StepTwo({ onClick, backStep, info, setInfo }) {
     }
   ]
 
+  function handleClick(plan) {
+    setInfo(prev => {
+      return {
+        ...prev,
+        step2: {
+          ...prev.step2,
+          plan: plan
+       }
+      }
+    })
+  }
+
   return (
     <main id='step-two'>
       <div className="card-wrapper">
-        {PLAN_CARDS.map(card => {
+        {plan_cards.map(card => {
           return (
             <PlanCard
               key={card.id}
               price={card.price}
               plan={card.plan}
 
-              selectCard={(prev) => setSelectCard(prev, card.plan)}
-              isSelectCard={selectCard === card.plan}
-
+              onClick={handleClick}
               info={info}
             />
           )

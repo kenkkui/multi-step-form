@@ -36,7 +36,6 @@ function StepOne({ info, setInfo, animationError, setAnimationError, setStepNumb
       }
 
       if (error.length > 0) {
-        console.log(error);
         setAnimationError(true)
       } else {
         setStepNumber((prev) => (prev += 1))
@@ -52,6 +51,7 @@ function StepOne({ info, setInfo, animationError, setAnimationError, setStepNumb
         {INPUTS.map(input => {
           return (
             <Inputs 
+              key={input.id}
               type={input.type}
               subject={input.subject}
               placeholder={input.placeholder}
