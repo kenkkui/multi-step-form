@@ -5,20 +5,21 @@ import Check from './Check';
 import Total from './Total';
 import "./StepFour.css"
 
-function StepFour({ backStep, nextStep, billingPeriod, setStepNumber }) {
+function StepFour({ backStep, nextStep, info, setInfo, setStepNumber }) {
   return (
     <main id='step-four'>
       <Check 
-        billingPeriod={billingPeriod}
-        setStepNumber={setStepNumber}
+        info={info}
+        setInfo={setInfo}
       />
 
       <Total 
-        billingPeriod={billingPeriod}
+        info={info}
+        setStepNumber={setStepNumber}
       />
       
       <BackBtn backStep={backStep} />
-      <NextBtn nextStep={nextStep} confirm />
+      <NextBtn onClick={nextStep} confirm />
     </main>
   );
 }

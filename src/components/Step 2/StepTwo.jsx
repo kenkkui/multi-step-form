@@ -24,13 +24,14 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
     }
   ]
 
-  function handleClick(plan) {
+  function handleClick(plan, price) {
     setInfo(prev => {
       return {
         ...prev,
         step2: {
           ...prev.step2,
-          plan: plan
+          plan: plan,
+          price: price
        }
       }
     })

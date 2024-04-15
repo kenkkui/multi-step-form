@@ -72,7 +72,7 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
       </section>
 
       <BackBtn backStep={backStep} />
-      <NextBtn nextStep={nextStep} />
+      <NextBtn onClick={nextStep} />
     </main>
   );
 }

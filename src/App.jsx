@@ -23,6 +23,7 @@ function App() {
     step2: {
       plan: "Arcade",
       period: "monthly",
+      price: "9/mo"
     },
     step3: {
       addOns: [],
@@ -139,7 +140,7 @@ function App() {
             <StepFour
               backStep={handleBackStep}
               nextStep={handleNextStep}
-              
+
               setStepNumber={setStepNumber}
               info={info}
             />
