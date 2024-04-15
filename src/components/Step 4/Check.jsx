@@ -1,17 +1,17 @@
 import React from 'react';
 
-function Check({ billingPeriod, setStepNumber }) {
+function Check({ info , setInfo, setStepNumber }) {
   return (
     <section className="check">
       <section className="main-plan">
         <div className='plan-name'>
-          <h1>Arcade ({billingPeriod === "monthly" ? "monthly" : "yearly"})</h1>
+          <h1>Arcade ({info.step2.period === "monthly" ? "monthly" : "yearly"})</h1>
           <p className='change-plan' onClick={() => setStepNumber(2)}>
             <u>Change</u>
           </p>
         </div>
 
-        <div className='price'>$9/mo</div>
+        <div className='price'>{}</div>
       </section>
 
       <section className='add-on-price'>
