@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 function Inputs({ type, subject, placeholder, setInfo, info }) {
 
@@ -13,9 +13,6 @@ function Inputs({ type, subject, placeholder, setInfo, info }) {
           [type]: value
         }
       }
-
-      console.log(updatedInfo);
-
       return updatedInfo;
     })
   }
@@ -27,7 +24,7 @@ function Inputs({ type, subject, placeholder, setInfo, info }) {
         <p className='error-message'></p>
       </div>
 
-      <input type={type} placeholder={placeholder} spellCheck={false} onChange={(e) => handleChange(type, e)} value={info.step1[type]} />
+      <input type={type} placeholder={placeholder} spellCheck={false} onChange={(e) => handleChange(type, e)} value={info[0].type ? info[0].type : null} />
     </div>
   );
 }

@@ -12,46 +12,26 @@ import StepFour from "./components/Step 4/StepFour";
 const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
 function App() {
-  const [billingPeriod, setBillingPeriod] = useState("monthly");
   const [stepNumber, setStepNumber] = useState(1);
 
   const [animationError, setAnimationError] = useState(false);
-  const [info, setInfo] = useState({
-    step1: {
+  const [info, setInfo] = useState([
+    {
       text: "",
       email: "",
       tel: "",
     },
-
-    step2: {
+    {
       plan: "Arcade",
       period: "monthly",
     },
-
-    step3: {
+    {
       addOns: [],
     },
-  });
+  ]);
 
-  function handleClick(step) {
-    if (step === "1") {
-      let error = [];
-
-      for (let key in info.step1) {
-        if (info.step1[key] === "" && !error.includes(key)) {
-          error.push(key);
-        }
-      }
-
-      if (error.length > 0) {
-        console.log(error);
-        setAnimationError(true)
-      } else {
-        setStepNumber((prev) => (prev += 1))
-      }
-    } else if (step === "2") {
-      setStepNumber((prev) => (prev += 1))
-    }
+  function handleClick() {
+    setStepNumber(prev => prev += 1)
   }
 
   return (
@@ -122,9 +102,11 @@ function App() {
           <Header stepNumber={stepNumber - 1} />
           {stepNumber === 1 && (
             <StepOne
-              handleClick={handleClick}
+              setStepNumber={setStepNumber}
+
               info={info}
               setInfo={setInfo}
+
               animationError={animationError}
               setAnimationError={setAnimationError}
             />
@@ -143,7 +125,6 @@ function App() {
           {stepNumber === 3 && (
             <StepThree
               backStep={() => setStepNumber((prev) => (prev -= 1))}
-              billingPeriod={billingPeriod}
               info={info}
               setInfo={setInfo}
             />
@@ -152,7 +133,6 @@ function App() {
           {stepNumber === 4 && (
             <StepFour
               backStep={() => setStepNumber((prev) => (prev -= 1))}
-              billingPeriod={billingPeriod}
               setStepNumber={setStepNumber}
               info={info}
             />
