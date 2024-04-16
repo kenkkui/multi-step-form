@@ -11,7 +11,7 @@ function PlanCard({ plan, price, info, onClick, cardId }) {
 
       <section className="plan-name">
         <div className="name">{plan}</div>
-        <div className="billing">${price}</div>
+        <div className="billing">${price}{info.step2.period === "monthly" ? "/mo" : "/yr"}</div>
         {info.step2.period === "yearly" && <p className='discount'>2 months free</p>}
       </section>
     </div>

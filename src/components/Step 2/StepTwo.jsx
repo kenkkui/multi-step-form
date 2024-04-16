@@ -5,42 +5,40 @@ import BackBtn from '../BackBtn';
 import PlanCard from './PlanCard';
 import BillingPlan from './BillingPlan';
 
+const PLAN_CARDS = [
+  {
+    id: 0,
+    plan: "Arcade",
+    monthlyPrice: "9",
+    yearlyPrice: "90",
+  },
+  {
+    id: 1,
+    plan: "Advanced",
+    monthlyPrice: "12",
+    yearlyPrice: "120",
+  },
+  {
+    id: 2,
+    plan: "Pro",
+    monthlyPrice: "15",
+    yearlyPrice: "150",
+  }
+]
+
 function StepTwo({ nextStep, backStep, info, setInfo }) {
-  const plan_cards = [
-    {
-      id: 0,
-      plan: "Arcade",
-      monthlyPrice: "9",
-      yearlyPrice: "90",
-    },
-    {
-      id: 1,
-      plan: "Advanced",
-      monthlyPrice: "12",
-      yearlyPrice: "120",
-    },
-    {
-      id: 2,
-      plan: "Pro",
-      monthlyPrice: "15",
-      yearlyPrice: "150",
-    }
-  ]
-
-  const [currentCardId, setCurrentCardId] = useState("");
-
+  const [currentCardId, setCurrentCardId] = useState(0);
+ 
   function handleSelectPlan(plan, id) {
     setCurrentCardId(id)
-
-    console.log("Current Card ID:", currentCardId); // Debugging statement
 
     setInfo(prev => {
       let price;
 
       if (info.step2.period === "monthly") {
-        price = plan_cards[currentCardId].monthlyPrice
+        price = PLAN_CARDS[id].monthlyPrice
       } else {
-        price = plan_cards[currentCardId].yearlyPrice
+        price = PLAN_CARDS[id].yearlyPrice
       }
 
       const updatedValues = {
@@ -57,32 +55,31 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
   }
 
   function handleClickToggle() {
-    console.log(currentCardId);
-    // setInfo((prev) => {
-    //   let price;
-    //   if (info.step2.period === "monthly") {
-    //     price = plan_cards[2].yearlyPrice
-    //   } else {
-    //     price = plan_cards[2].monthlyPrice
-    //   }
+    setInfo((prev) => {
+      let price;
+      if (info.step2.period === "monthly") {
+        price = PLAN_CARDS[currentCardId].yearlyPrice
+      } else {
+        price = PLAN_CARDS[currentCardId].monthlyPrice
+      }
 
-    //   const updatedValues = {
-    //     ...prev,
-    //     step2: {  
-    //       ...prev.step2,
-    //       period: info.step2.period === "monthly" ? "yearly" : "monthly",
-    //       price: price
-    //     }
-    //   }
+      const updatedValues = {
+        ...prev,
+        step2: {  
+          ...prev.step2,
+          period: info.step2.period === "monthly" ? "yearly" : "monthly",
+          price: price
+        }
+      }
 
-    //   return updatedValues;
-    // })
+      return updatedValues;
+    })
   }
 
   return (
     <main id='step-two'>
       <div className="card-wrapper">
-        {plan_cards.map(card => {
+        {PLAN_CARDS.map(card => {
           return (
             <PlanCard
               key={card.id}
