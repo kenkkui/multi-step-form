@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import Step from "./components/Step";
 import Forms from "./components/Forms";

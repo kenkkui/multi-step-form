@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./StepTwo.css"
 import NextBtn from '../NextBtn';
 import BackBtn from '../BackBtn';
@@ -9,24 +9,41 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
   const plan_cards = [
     {
       id: 0,
-      price: info.step2.period === "monthly" ? "9/mo" : "90/yr",
-      plan: "Arcade"
+      plan: "Arcade",
+      monthlyPrice: "9",
+      yearlyPrice: "90",
     },
     {
       id: 1,
-      price: info.step2.period === "monthly" ? "12/mo" : "120/yr",
-      plan: "Advanced"
+      plan: "Advanced",
+      monthlyPrice: "12",
+      yearlyPrice: "120",
     },
     {
       id: 2,
-      price: info.step2.period === "monthly" ? "15/mo" : "150/yr",
-      plan: "Pro"
+      plan: "Pro",
+      monthlyPrice: "15",
+      yearlyPrice: "150",
     }
   ]
 
-  function handleClick(plan, price) {
+  const [currentCardId, setCurrentCardId] = useState("");
+
+  function handleSelectPlan(plan, id) {
+    setCurrentCardId(id)
+
+    console.log("Current Card ID:", currentCardId); // Debugging statement
+
     setInfo(prev => {
-      return {
+      let price;
+
+      if (info.step2.period === "monthly") {
+        price = plan_cards[currentCardId].monthlyPrice
+      } else {
+        price = plan_cards[currentCardId].yearlyPrice
+      }
+
+      const updatedValues = {
         ...prev,
         step2: {
           ...prev.step2,
@@ -34,7 +51,32 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
           price: price
        }
       }
+
+      return updatedValues
     })
+  }
+
+  function handleClickToggle() {
+    console.log(currentCardId);
+    // setInfo((prev) => {
+    //   let price;
+    //   if (info.step2.period === "monthly") {
+    //     price = plan_cards[2].yearlyPrice
+    //   } else {
+    //     price = plan_cards[2].monthlyPrice
+    //   }
+
+    //   const updatedValues = {
+    //     ...prev,
+    //     step2: {  
+    //       ...prev.step2,
+    //       period: info.step2.period === "monthly" ? "yearly" : "monthly",
+    //       price: price
+    //     }
+    //   }
+
+    //   return updatedValues;
+    // })
   }
 
   return (
@@ -44,10 +86,11 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
           return (
             <PlanCard
               key={card.id}
-              price={card.price}
+              cardId={card.id}
+              price={info.step2.period === "monthly" ? card.monthlyPrice : card.yearlyPrice}
               plan={card.plan}
 
-              onClick={handleClick}
+              onClick={handleSelectPlan}
               info={info}
             />
           )
@@ -55,7 +98,7 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
       </div>
 
       <BillingPlan 
-        setInfo={setInfo}
+        onClick={handleClickToggle}
         info={info}
       />
 

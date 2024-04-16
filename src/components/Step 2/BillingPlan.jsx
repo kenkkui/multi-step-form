@@ -1,6 +1,6 @@
 import React from "react";
 
-function BillingPlan({ info, setInfo }) {
+function BillingPlan({ info, onClick }) {
   return (
     <section className="billing-plan">
       <div className="content-container">
@@ -9,18 +9,7 @@ function BillingPlan({ info, setInfo }) {
         </p>
         <div
           className={`switch ${info.step2.period === "yearly" ? "active" : ""}`}
-          onClick={() =>
-            setInfo((prev) => {
-              const updatedValues = {
-                ...prev,
-                step2: {  
-                  ...prev.step2,
-                  period: info.step2.period === "monthly" ? "yearly" : "monthly"
-                }
-              }
-              return updatedValues;
-            })
-          }
+          onClick={onClick}
         ></div>
         <p className={info.step2.period === "yearly" ? "active" : ""}>Yearly</p>
       </div>
