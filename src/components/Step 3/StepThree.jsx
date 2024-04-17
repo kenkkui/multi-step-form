@@ -1,35 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "./StepThree.css";
 import Card from "../Card";
 import BackBtn from "../BackBtn";
 import NextBtn from "../NextBtn";
 
 function StepThree({ nextStep, backStep, info, setInfo }) {
+  const [selectCards, setSelectCards] = useState([]);
 
   function toggleCard(cardName) {
-    if (info.step3.addOns.includes(cardName)) {
-      setInfo(prev => {
-        const updatedValues = {
-          ...prev,
-          step3: {
-            addOns: prev.step3.addOns.filter(index => index !== cardName)
-          }
-        }
-
-        return updatedValues
+    if (selectCards.includes(cardName)) {
+      setSelectCards(selectCards.filter(name => name !== cardName))
+    } else {
+      setSelectCards(prev => {
+        const updatedValues = [...prev, cardName]
+        return updatedValues;
       })
+    }
+
+    if (info,step3.addOns.includes(cardName)) {
+      setInfo(info.step3.addOns.filter(item => item !== cardName))
     } else {
       setInfo(prev => {
         const updatedValues = {
           ...prev,
           step3: {
-            addOns: [...prev.step3.addOns, cardName]
+            addOns: [ ...p]
           }
         }
-
-        return updatedValues
       })
+    }
+  }
 
+  function handleNextStep() {
+    for (let card of selectCards) {
+      for (let item of cards) {
+        if (item.name === card) {
+          const object = {
+            name: item.name,
+            price: item.price,
+          }
+
+          setInfo(prev => {
+            const updatedValues = {
+              ...prev,
+              step3: {
+                addOns: [
+                  ...prev.step3.addOns,
+                  object
+                ]
+              }
+            }
+
+            return updatedValues
+          })
+        } 
+      }
     }
   }
 
@@ -38,19 +63,19 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
       id: 1,
       name:"Online service",
       aside:"Access to multiplayer gamers",
-      price: info.step2.period === "yearly" ? "10/yr" : "1/mo"
+      price: info.step2.period === "yearly" ? "10" : "1"
     },
     {
       id: 2,
       name:"Larger storage",
       aside:"Extra 1TB of cloud save",
-      price: info.step2.period === "yearly" ? "20/yr" : "2/mo"
+      price: info.step2.period === "yearly" ? "20" : "2"
     },
     {
       id: 3,
       name:"Customizable profile",
       aside:"Custom theme on your profile",
-      price: info.step2.period === "yearly" ? "20/yr" : "2/mo"
+      price: info.step2.period === "yearly" ? "20" : "2"
     }
   ]
 
@@ -64,7 +89,7 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
               name={card.name}
               aside={card.aside}
               price={card.price}
-              selectCard={info.step3.addOns.includes(card.name)}
+              selectCard={selectCards.includes(card.name)}
               onClick={() => toggleCard(card.name)}
             />
           )
@@ -72,7 +97,7 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
       </section>
 
       <BackBtn backStep={backStep} />
-      <NextBtn onClick={nextStep} />
+      <NextBtn onClick={handleNextStep} />
     </main>
   );
 }
