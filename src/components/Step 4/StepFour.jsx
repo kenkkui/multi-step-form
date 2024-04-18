@@ -10,12 +10,12 @@ function StepFour({ backStep, nextStep, info, setInfo, setStepNumber }) {
     <main id='step-four'>
       <Check 
         info={info}
-        setInfo={setInfo}
+        setStepNumber={setStepNumber}
       />
 
       <Total 
         info={info}
-        setStepNumber={setStepNumber}
+        setInfo={setInfo}
       />
       
       <BackBtn backStep={backStep} />

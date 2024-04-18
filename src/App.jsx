@@ -27,10 +27,9 @@ function App() {
     },
     step3: {
       selectedCards: [],
-      cardInfos: {
-        
-      }
+      cardInfos: {}
     },
+    step4: "",
   });
 
   function handleNextStep() {
@@ -133,7 +132,7 @@ function App() {
             <StepThree
               backStep={handleBackStep}
               nextStep={handleNextStep}
-
+s
               info={info}
               setInfo={setInfo}
             />
@@ -146,6 +145,7 @@ function App() {
 
               setStepNumber={setStepNumber}
               info={info}
+              setInfo={setInfo}
             />
           )}
         </Forms>
