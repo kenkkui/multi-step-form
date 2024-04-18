@@ -4,7 +4,7 @@ import Step from "./components/Step";
 import Forms from "./components/Forms";
 
 import StepOne from "./components/Step 1/StepOne";
-import StepTwo from "./components/Step 2/Steptwo";
+import StepTwo from "./components/Step 2/StepTwo";
 import StepThree from "./components/Step 3/StepThree";
 import Header from "./components/Header";
 import StepFour from "./components/Step 4/StepFour";
@@ -21,12 +21,15 @@ function App() {
       tel: "",
     },
     step2: {
-      plan: "Arcade",
       period: "monthly",
-      price: "9/mo"
+      plan: "Arcade",
+      price: "9"
     },
     step3: {
-      addOns: [],
+      selectedCards: [],
+      cardInfos: {
+        
+      }
     },
   });
 

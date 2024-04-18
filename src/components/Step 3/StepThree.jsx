@@ -1,103 +1,132 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./StepThree.css";
 import Card from "../Card";
 import BackBtn from "../BackBtn";
 import NextBtn from "../NextBtn";
 
 function StepThree({ nextStep, backStep, info, setInfo }) {
-  const [selectCards, setSelectCards] = useState([]);
-
-  function toggleCard(cardName) {
-    if (selectCards.includes(cardName)) {
-      setSelectCards(selectCards.filter(name => name !== cardName))
-    } else {
-      setSelectCards(prev => {
-        const updatedValues = [...prev, cardName]
-        return updatedValues;
-      })
-    }
-
-    if (info,step3.addOns.includes(cardName)) {
-      setInfo(info.step3.addOns.filter(item => item !== cardName))
-    } else {
+  function toggleCard(cardName, id) {
+    if (info.step3.cardInfos.hasOwnProperty(cardName)) {
       setInfo(prev => {
         const updatedValues = {
           ...prev,
-          step3: {
-            addOns: [ ...p]
+          step3: { 
+            cardInfos: {
+              ...prev.step3.cardInfos,
+            },
+            selectedCards: info.step3.selectedCards.filter(item => item !== id)
           }
         }
+
+        delete updatedValues.step3.cardInfos[cardName];
+        return updatedValues;
+      })
+      
+
+    } else {
+      setInfo(prev => {
+        let price;
+        if (info.step2.period === "monthly") {
+          price = CARDS[id].monthlyPrice
+        } else {
+          price = CARDS[id].yearlyPrice;
+        }
+
+        const updatedValues ={
+          ...prev,
+          step3: {
+            selectedCards: [
+              ...prev.step3.selectedCards,
+              id
+            ],
+            cardInfos: {
+              ...prev.step3.cardInfos,
+              [cardName]: price
+            }
+          }
+        }
+
+        return updatedValues
       })
     }
   }
 
-  function handleNextStep() {
-    for (let card of selectCards) {
-      for (let item of cards) {
-        if (item.name === card) {
-          const object = {
-            name: item.name,
-            price: item.price,
-          }
+  useEffect(() => {
+    for (let key of info.step3.selectedCards) {
+      console.log(key);
 
-          setInfo(prev => {
-            const updatedValues = {
-              ...prev,
-              step3: {
-                addOns: [
-                  ...prev.step3.addOns,
-                  object
-                ]
-              }
+      setInfo(prev => {
+        let price;
+  
+        if (info.step2.period === "monthly") {
+          price = CARDS[key].monthlyPrice
+        } else {
+          price = CARDS[key].yearlyPrice
+        }
+
+        const updatedValues = {
+          ...prev,
+          step3: {
+            ...prev.step3,
+            cardInfos: {
+              ...prev.step3.cardInfos,
+              [CARDS[key].name]: price
             }
+          }
+        }
 
-            return updatedValues
-          })
-        } 
-      }
+        return updatedValues
+      })
     }
-  }
+  }, [info.step2.period])
 
-  const cards = [
+  const CARDS = [
     {
-      id: 1,
+      id: 0,
       name:"Online service",
       aside:"Access to multiplayer gamers",
-      price: info.step2.period === "yearly" ? "10" : "1"
+      monthlyPrice: 1,
+      yearlyPrice: 10
+    },
+    {
+      id: 1,
+      name:"Larger storage",
+      aside:"Extra 1TB of cloud save",
+      monthlyPrice: 2,
+      yearlyPrice: 20
     },
     {
       id: 2,
-      name:"Larger storage",
-      aside:"Extra 1TB of cloud save",
-      price: info.step2.period === "yearly" ? "20" : "2"
-    },
-    {
-      id: 3,
       name:"Customizable profile",
       aside:"Custom theme on your profile",
-      price: info.step2.period === "yearly" ? "20" : "2"
+      monthlyPrice: 2,
+      yearlyPrice: 20
     }
   ]
 
   return (
     <main id="step-three">
       <section className="card-wrapper">
-        {cards.map(card => {
+        {CARDS.map(card => {
+          const periodCheck = info.step2.period === "monthly" ? card.monthlyPrice : card.yearlyPrice
+
           return (
             <Card
               key={card.id}
+
               name={card.name}
               aside={card.aside}
-              price={card.price}
-              selectCard={selectCards.includes(card.name)}
-              onClick={() => toggleCard(card.name)}
+              price={periodCheck}
+
+              onClick={() => toggleCard(card.name, card.id)}
+              isCardSelected={info.step3.cardInfos.hasOwnProperty(card.name)}
             />
           )
         })}
       </section>
 
       <BackBtn backStep={backStep} />
-      <NextBtn onClick={handleNextStep} />
+      <NextBtn onClick={nextStep} />
     </main>
   );
 }

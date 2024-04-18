@@ -69,7 +69,7 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
           ...prev.step2,
           period: info.step2.period === "monthly" ? "yearly" : "monthly",
           price: price
-        }
+        },
       }
 
       return updatedValues;
