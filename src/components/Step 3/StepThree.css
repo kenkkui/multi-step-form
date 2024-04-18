@@ -36,7 +36,18 @@ main#step-three .check-name-wrapper {
   justify-content: center;
 }
 
-.checkbox-wrapper input[type="checkbox"] {
+main#step-three label {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+input[type="checkbox"] {
+  position: absolute;
   appearance: none;
   height: 100%;
   width: 100%;
@@ -51,11 +62,12 @@ input[type="checkbox"]:checked {
   background: var(--purplish-blue);
 }
 
-main#step-three label {
+main#step-three label svg {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 100;
 }
 
 main#step-three h1 {

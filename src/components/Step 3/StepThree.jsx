@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./StepThree.css";
-import Card from "../Card";
 import BackBtn from "../BackBtn";
 import NextBtn from "../NextBtn";
+import Checkbox from "./Checkbox";
 
 function StepThree({ nextStep, backStep, info, setInfo }) {
   function toggleCard(cardName, id) {
@@ -111,7 +111,7 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
           const periodCheck = info.step2.period === "monthly" ? card.monthlyPrice : card.yearlyPrice
 
           return (
-            <Card
+            <Checkbox
               key={card.id}
 
               name={card.name}
