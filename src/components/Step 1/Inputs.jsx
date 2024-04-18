@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Inputs({ type, subject, placeholder, setInfo, info }) {
+function Inputs({ type, subject, placeholder, setInfo, info, name }) {
 
   function handleChange(type, e) {
     const value =  e.target.value;
@@ -24,7 +24,7 @@ function Inputs({ type, subject, placeholder, setInfo, info }) {
         <p className='error-message'></p>
       </div>
 
-      <input type={type} placeholder={placeholder} spellCheck={false} onChange={(e) => handleChange(type, e)} value={info.step1[type]} />
+      <input autoComplete="on" name={name} type={type} placeholder={placeholder} spellCheck={false} onChange={(e) => handleChange(type, e)} value={info.step1[type]} />
     </div>
   );
 }
