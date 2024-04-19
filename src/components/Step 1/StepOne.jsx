@@ -55,7 +55,6 @@ function StepOne({ info, setInfo, animationError, setAnimationError, setStepNumb
               type={input.type}
               subject={input.subject}
               placeholder={input.placeholder}
-              name={input.subject}
 
               info={info}
               setInfo={setInfo}
