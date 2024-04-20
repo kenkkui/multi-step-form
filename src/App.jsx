@@ -8,6 +8,7 @@ import StepTwo from "./components/Step 2/StepTwo";
 import StepThree from "./components/Step 3/StepThree";
 import Header from "./components/Header";
 import StepFour from "./components/Step 4/StepFour";
+import StepFive from "./components/Step 5/StepFive";
 
 const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
@@ -104,7 +105,8 @@ function App() {
         </section>
 
         <Forms>
-          <Header stepNumber={stepNumber - 1} />
+          {stepNumber !== 5 && <Header stepNumber={stepNumber - 1} />}
+
           {stepNumber === 1 && (
             <StepOne
               setStepNumber={setStepNumber}
@@ -141,6 +143,8 @@ function App() {
               setInfo={setInfo}
             />
           )}
+
+          {stepNumber === 5 && <StepFive />}
         </Forms>
       </section>
     </>

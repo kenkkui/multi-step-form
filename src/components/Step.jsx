@@ -1,15 +1,18 @@
-import React from 'react';
-import "./Step.css"
+import React from "react";
+import "./Step.css";
 
-function Step({ step, stepState, heading}) {
+function Step({ step, stepState, heading }) {
   return (
     <div className="step">
-      <div className={`step-number-container ${step === stepState ? "active" : ""}`}>
-          <div className="number">{step}</div>
+      <div
+        className={`step-number-container ${
+          step === stepState || (stepState === 5 && step === 4) ? "active" : ""
+        }`}
+      >
+        <div className="number">{step}</div>
       </div>
- 
 
-      <div className='step-infos'>
+      <div className="step-infos">
         <div className="step-number">STEP {step}</div>
         <div className="step-heading">{heading}</div>
       </div>

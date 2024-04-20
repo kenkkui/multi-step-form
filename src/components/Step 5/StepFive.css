@@ -1,0 +1,15 @@
+main#step-five {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+main#step-five  h1 {
+  font-size: 32px;
+}
+
+main#step-five  p {
+  text-align: center;
+}

@@ -36,25 +36,23 @@ function StepOne({ info, setInfo, setStepNumber }) {
   }
 
   return (
-    <>
-      <main id="step-one">
-        {INPUTS.map((input) => {
-          return (
-            <Inputs
-              key={input.id}
-              type={input.type}
-              subject={input.subject}
-              placeholder={input.placeholder}
-              isError={isError}
-              info={info}
-              setInfo={setInfo}
-            />
-          );
-        })}
+    <main id="step-one">
+      {INPUTS.map((input) => {
+        return (
+          <Inputs
+            key={input.id}
+            type={input.type}
+            subject={input.subject}
+            placeholder={input.placeholder}
+            isError={isError}
+            info={info}
+            setInfo={setInfo}
+          />
+        );
+      })}
 
-        <NextBtn onClick={handleClick} isError={isError} />
-      </main>
-    </>
+      <NextBtn onClick={handleClick} isError={isError} />
+    </main>
   );
 }
 
