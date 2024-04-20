@@ -13,7 +13,6 @@ const stepHeadings = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
 function App() {
   const [stepNumber, setStepNumber] = useState(1);
-  const [animationError, setAnimationError] = useState(false);
   const [info, setInfo] = useState({
     step1: {
       text: "",
@@ -112,9 +111,6 @@ function App() {
 
               info={info}
               setInfo={setInfo}
-
-              animationError={animationError}
-              setAnimationError={setAnimationError}
             />
           )}
 

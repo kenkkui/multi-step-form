@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Inputs from "./Inputs"
 import "./StepOne.css"
 import NextBtn from '../NextBtn';
@@ -24,23 +24,21 @@ const INPUTS = [
   },
 ]
 
-function StepOne({ info, setInfo, animationError, setAnimationError, setStepNumber }) {
+function StepOne({ info, setInfo, setStepNumber }) {
+  const [ isError, setIsError ] = useState(false);
+
   function handleClick(step) {
-    if (step === "1") {
-      let error = [];
+    let error = [];
 
-      for (let key in info.step1) {
-        if (info.step1[key] === "" && !error.includes(key)) {
-          error.push(key); 
-        }
+    for (let key in info.step1) {
+      if (info.step1[key] === "" && !error.includes(key)) {
+        error.push(key); 
       }
+    }
 
-      if (error.length > 0) {
-        setAnimationError(true)
-      } else {
-        setStepNumber((prev) => (prev += 1))
-      }
-    } else if (step === "2") {
+    if (error.length > 0) {
+      setIsError(true)
+    } else {
       setStepNumber((prev) => (prev += 1))
     }
   }
@@ -63,9 +61,9 @@ function StepOne({ info, setInfo, animationError, setAnimationError, setStepNumb
         })}
 
         <NextBtn
-          onClick={() => handleClick("1")}
-          animation={animationError}
-          setAnimationError={setAnimationError}
+          onClick={handleClick}
+          animation={isError}
+          setIsError={setIsError}
         />
       </main>
     </>
