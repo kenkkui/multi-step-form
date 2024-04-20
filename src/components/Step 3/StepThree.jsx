@@ -22,7 +22,6 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
         return updatedValues;
       })
       
-
     } else {
       setInfo(prev => {
         let price;

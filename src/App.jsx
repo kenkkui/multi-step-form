@@ -22,11 +22,11 @@ function App() {
     step2: {
       period: "monthly",
       plan: "Arcade",
-      price: "9"
+      price: "9",
     },
     step3: {
       selectedCards: [],
-      cardInfos: {}
+      cardInfos: {},
     },
     step4: "",
   });
@@ -108,10 +108,8 @@ function App() {
           {stepNumber === 1 && (
             <StepOne
               setStepNumber={setStepNumber}
-
               info={info}
               setInfo={setInfo}
-
             />
           )}
 
@@ -119,7 +117,6 @@ function App() {
             <StepTwo
               backStep={handleBackStep}
               nextStep={handleNextStep}
-
               info={info}
               setInfo={setInfo}
             />
@@ -129,7 +126,7 @@ function App() {
             <StepThree
               backStep={handleBackStep}
               nextStep={handleNextStep}
-s
+              s
               info={info}
               setInfo={setInfo}
             />
@@ -139,7 +136,6 @@ s
             <StepFour
               backStep={handleBackStep}
               nextStep={handleNextStep}
-
               setStepNumber={setStepNumber}
               info={info}
               setInfo={setInfo}
