@@ -111,6 +111,7 @@ function App() {
 
               info={info}
               setInfo={setInfo}
+
             />
           )}
 

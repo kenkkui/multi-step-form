@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function Inputs({ type, subject, placeholder, setInfo, info }) {
-
+function Inputs({ type, subject, placeholder, setInfo, info, isError }) {
   function handleChange(type, e) {
     const value =  e.target.value;
 
@@ -21,7 +20,7 @@ function Inputs({ type, subject, placeholder, setInfo, info }) {
     <div className='input'>
       <div className="label-container">
         <label>{subject}</label>
-        <p className='error-message'></p>
+        {isError.hasOwnProperty(type) && <p className='error-message'>This field is required</p>}
       </div>
 
       <input type={type} placeholder={placeholder} spellCheck={false} onChange={(e) => handleChange(type, e)} value={info.step1[type]} />

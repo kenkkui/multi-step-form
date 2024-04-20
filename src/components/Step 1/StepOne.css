@@ -20,6 +20,11 @@ main#step-one{
   justify-content: space-between;
 }
 
+.label-container .error-message {
+  color: var(--strawberry-red);
+  font-weight: 700;
+}
+
 .input input {
   height: 50px;
   width: 100%;

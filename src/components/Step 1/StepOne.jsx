@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Inputs from "./Inputs"
 import "./StepOne.css"
 import NextBtn from '../NextBtn';
+import validation from './validate';
 
 const INPUTS = [
   {
@@ -25,22 +26,26 @@ const INPUTS = [
 ]
 
 function StepOne({ info, setInfo, setStepNumber }) {
-  const [ isError, setIsError ] = useState(false);
+  const [ isError, setIsError ] = useState({});
 
-  function handleClick(step) {
-    let error = [];
+  useEffect(() => {
+    console.log(isError);
 
-    for (let key in info.step1) {
-      if (info.step1[key] === "" && !error.includes(key)) {
-        error.push(key); 
-      }
-    }
+  }, [isError])
 
-    if (error.length > 0) {
-      setIsError(true)
-    } else {
-      setStepNumber((prev) => (prev += 1))
-    }
+  function handleClick() {
+    setIsError(validation(info.step1))
+    // let error = {};
+
+    // for (let key in info.step1) {
+    //   if (info.step1[key] === "" && !error.includes(key)) {
+    //     error.push(key);
+    //   }
+    // }
+
+    // if (error.length === 0) {
+    //   setStepNumber((prev) => (prev += 1))
+    // }
   }
 
   return (
@@ -53,6 +58,8 @@ function StepOne({ info, setInfo, setStepNumber }) {
               type={input.type}
               subject={input.subject}
               placeholder={input.placeholder}
+
+              isError={isError}
 
               info={info}
               setInfo={setInfo}
