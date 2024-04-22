@@ -1,4 +1,5 @@
 import React from "react";
+import "./StepFive.css"
 
 function StepFive() {
   return (
@@ -27,10 +28,7 @@ function StepFive() {
       <div className="body">
         <h1>Thank You!</h1>
         <p>
-          Thanks for confirming your subscription! We hope you have <br />
-          fun using our platform. If you ever need support, please feel
-          <br />
-          free to email us at support@loremgaming.com
+          Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com
         </p>
       </div>
     </main>

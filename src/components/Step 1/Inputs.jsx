@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function Inputs({ type, subject, placeholder, setInfo, info, isError }) {
   function handleChange(type, e) {
@@ -26,6 +26,7 @@ function Inputs({ type, subject, placeholder, setInfo, info, isError }) {
       </div>
 
       <input
+        style={isError.hasOwnProperty(type) ? {border: "1px solid red"} : {}}
         type={type}
         placeholder={placeholder}
         spellCheck={false}
