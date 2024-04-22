@@ -8,16 +8,25 @@ function App() {
   const [stepNumber, setStepNumber] = useState(1);  
 
   return (
-    <section id="content">
+    <>
       <StepFlow 
+        className="mobile"
         stepNumber={stepNumber}
       />
 
-      <Forms 
-        stepNumber={stepNumber}
-        setStepNumber={setStepNumber}
-      />
-    </section>
+      <section id="content">
+        <StepFlow
+          className="desktop"
+          stepNumber={stepNumber}
+        />
+
+        <Forms 
+          stepNumber={stepNumber}
+          setStepNumber={setStepNumber}
+        />
+      </section>
+    </>
+
   );
 }
 

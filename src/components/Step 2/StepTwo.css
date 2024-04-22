@@ -82,9 +82,11 @@ main#step-two .discount {
   color: var(--marine-blue);
 }
 
-@media (max-width:1440px) {
+@media (max-width:1700px) {
   main#step-two .card-wrapper {
-    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
     margin-bottom: 20px;
   }
 }
