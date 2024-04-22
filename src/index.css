@@ -152,30 +152,6 @@ body {
   color: var(--cool-grey);
 }
 
-.plan-card {
-  border: 1px solid var(--light-grey);
-  border-radius: 8px;
-  padding: 20px 18px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-
-  transition: 0.1s;
-  height: 190px;
-  flex-direction: column;
-}
-
-.card:hover,
-.plan-card:hover {
-  border: 1px solid var(--purplish-blue);
-}
-
-.card.active,
-.plan-card.active {
-  background: var(--magnolia);
-  border: 1px solid var(--purplish-blue);
-}
-
 @media (max-width:1547px) {
   #form-page {
     padding: 40px 67px 20px;
@@ -185,6 +161,12 @@ body {
 @media (max-width:1470px) {
   #form-page {
     padding: 40px 45px 20px;
+  }
+}
+
+@media (max-width:1330px) {
+  #content {
+    width: 70vw;
   }
 }
 

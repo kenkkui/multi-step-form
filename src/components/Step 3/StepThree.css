@@ -85,7 +85,18 @@ main#step-three aside {
   color: var(--cool-grey);
 }
 
-main#step-three .billing-price {
+.billing-price {
   color: var(--purplish-blue);
   font-weight: 500;
+}
+
+@media (max-width:444px) {
+  main#step-three aside {
+    font-size: 14px;
+  }
+
+  .billing-price {
+    font-size: 14px;
+    font-weight: 700;
+  }
 }

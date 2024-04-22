@@ -85,3 +85,17 @@ main#step-four {
 
   color: var(--purplish-blue);
 }
+
+@media (max-width:400px) {
+  .check .main-plan .price {
+    font-size: 14px;
+  }
+
+  .add-on .price {
+    font-size: 13px;
+  }
+  
+  .total-container .total-price {
+    font-size: 16px;
+  }
+}
