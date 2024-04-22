@@ -6,6 +6,10 @@ main#step-one{
   justify-content: space-between;
 }
 
+main#step-one .btn-wrapper {
+  justify-content: flex-end;
+}
+
 .inputs-section {
   display: flex;
   flex-direction: column;

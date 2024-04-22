@@ -7,7 +7,7 @@ import Header from "./Header";
 import StepFour from "./Step 4/StepFour";
 import StepFive from "./Step 5/StepFive";
 
-function Forms({ stepNumber, setStepNumber }) {
+function Forms({ stepNumber, setStepNumber, handleBackStep, handleNextStep }) {
   const [info, setInfo] = useState({
     step1: {},
     step2: {
@@ -21,14 +21,6 @@ function Forms({ stepNumber, setStepNumber }) {
     },
     step4: "",
   });
-
-  function handleNextStep() {
-    setStepNumber((prev) => (prev += 1));
-  }
-
-  function handleBackStep() {
-    setStepNumber((prev) => (prev -= 1));
-  }
 
   function renderStep() {
     if (stepNumber === 1) {

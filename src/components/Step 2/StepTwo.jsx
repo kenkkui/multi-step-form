@@ -78,31 +78,35 @@ function StepTwo({ nextStep, backStep, info, setInfo }) {
 
   return (
     <main id='step-two'>
-      <div className="card-wrapper">
-        {PLAN_CARDS.map(card => {
-          return (
-            <PlanCard
-              key={card.id}
-              cardId={card.id}
-              price={info.step2.period === "monthly" ? card.monthlyPrice : card.yearlyPrice}
-              plan={card.plan}
+      <div className="step-two-content">
+        <div className="card-wrapper">
+          {PLAN_CARDS.map(card => {
+            return (
+              <PlanCard
+                key={card.id}
+                cardId={card.id}
+                price={info.step2.period === "monthly" ? card.monthlyPrice : card.yearlyPrice}
+                plan={card.plan}
 
-              onClick={handleSelectPlan}
-              info={info}
-            />
-          )
-        })}
+                onClick={handleSelectPlan}
+                info={info}
+              />
+            )
+          })}
+        </div>
+
+        <BillingPlan 
+          onClick={handleClickToggle}
+          info={info}
+        />
       </div>
 
-      <BillingPlan 
-        onClick={handleClickToggle}
-        info={info}
-      />
-
-      <BackBtn backStep={backStep} />
-      <NextBtn 
-        onClick={nextStep}
-      />
+      <section className="btn-wrapper">
+        <BackBtn backStep={backStep} />
+        <NextBtn 
+          onClick={nextStep}
+        />
+      </section>
     </main>
   );
 }

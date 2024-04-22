@@ -1,6 +1,10 @@
 main#step-two {
   height: 100%;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 main#step-two .card-wrapper {
@@ -86,7 +90,7 @@ main#step-two .discount {
   main#step-two .card-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 25px;
     margin-bottom: 20px;
   }
 }

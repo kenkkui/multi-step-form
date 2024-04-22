@@ -53,8 +53,10 @@ function StepOne({ info, setInfo, setStepNumber }) {
         })}
       </section>
 
-
-      <NextBtn onClick={handleClick} isError={isError} />
+      
+      <div className="btn-wrapper desktop">
+        <NextBtn onClick={handleClick} isError={isError} />
+      </div>
     </main>
   );
 }

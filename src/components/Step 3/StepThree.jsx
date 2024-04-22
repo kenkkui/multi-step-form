@@ -124,8 +124,10 @@ function StepThree({ nextStep, backStep, info, setInfo }) {
         })}
       </section>
 
-      <BackBtn backStep={backStep} />
-      <NextBtn onClick={nextStep} />
+      <div className="btn-wrapper">
+        <BackBtn backStep={backStep} />
+        <NextBtn onClick={nextStep} />
+      </div>
     </main>
   );
 }
