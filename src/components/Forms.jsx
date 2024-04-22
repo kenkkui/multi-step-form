@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from "react";
 
 import StepOne from "./Step 1/StepOne";
 import StepTwo from "./Step 2/StepTwo";
@@ -7,21 +7,16 @@ import Header from "./Header";
 import StepFour from "./Step 4/StepFour";
 import StepFive from "./Step 5/StepFive";
 
-function Forms({ stepNumber, setStepNumber, handleBackStep, handleNextStep }) {
-  const [info, setInfo] = useState({
-    step1: {},
-    step2: {
-      period: "monthly",
-      plan: "Arcade",
-      price: "9",
-    },
-    step3: {
-      selectedCards: [],
-      cardInfos: {},
-    },
-    step4: "",
-  });
-
+function Forms({
+  stepNumber,
+  setStepNumber,
+  handleBackStep,
+  handleNextStep,
+  info,
+  setInfo,
+  isError,
+  setIsError,
+}) {
   function renderStep() {
     if (stepNumber === 1) {
       return (
@@ -29,8 +24,10 @@ function Forms({ stepNumber, setStepNumber, handleBackStep, handleNextStep }) {
           setStepNumber={setStepNumber}
           info={info}
           setInfo={setInfo}
+          isError={isError}
+          setIsError={setIsError}
         />
-      )
+      );
     } else if (stepNumber === 2) {
       return (
         <StepTwo
@@ -39,7 +36,7 @@ function Forms({ stepNumber, setStepNumber, handleBackStep, handleNextStep }) {
           info={info}
           setInfo={setInfo}
         />
-      )
+      );
     } else if (stepNumber === 3) {
       return (
         <StepThree
@@ -48,7 +45,7 @@ function Forms({ stepNumber, setStepNumber, handleBackStep, handleNextStep }) {
           info={info}
           setInfo={setInfo}
         />
-      )
+      );
     } else if (stepNumber === 4) {
       return (
         <StepFour
@@ -58,15 +55,15 @@ function Forms({ stepNumber, setStepNumber, handleBackStep, handleNextStep }) {
           info={info}
           setInfo={setInfo}
         />
-      )
+      );
     } else if (stepNumber === 5) {
-      return <StepFive />
+      return <StepFive />;
     }
   }
 
   return (
     <section id="form-page">
-      <section className='form-content'>
+      <section className="form-content">
         {stepNumber !== 5 && <Header stepNumber={stepNumber - 1} />}
         {renderStep()}
       </section>

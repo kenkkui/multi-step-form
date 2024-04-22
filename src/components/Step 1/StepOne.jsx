@@ -25,11 +25,10 @@ const INPUTS = [
   },
 ];
 
-function StepOne({ info, setInfo, setStepNumber }) {
-  const [isError, setIsError] = useState({});
-
-  function handleClick() {
+function StepOne({ info, setInfo, setStepNumber, isError, setIsError }) {
+  function handleStep1Validate() {
     setIsError(validation(info.step1));
+
     if (Object.keys(validation(info.step1)).length === 0) {
       setStepNumber((prev) => (prev += 1));
     }
@@ -53,9 +52,8 @@ function StepOne({ info, setInfo, setStepNumber }) {
         })}
       </section>
 
-      
       <div className="btn-wrapper desktop">
-        <NextBtn onClick={handleClick} isError={isError} />
+        <NextBtn onClick={handleStep1Validate} isError={isError} />
       </div>
     </main>
   );
